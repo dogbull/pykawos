@@ -20,7 +20,7 @@ def read(sub_url, cache_dir):
         df = pd.read_csv(data_url)
         if cache_path:
             os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-            df.to_csv(cache_path)
+            df.to_csv(cache_path, index=False)
     return df
 
 
