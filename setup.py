@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='pykawos',
-    version='0.0.2',
+    version='0.0.3',
     description='Python KMA AWS and ASOS',
     author='ParkJooHyeon',
     author_email='www.jrr.kr@gmail.com',
     url='https://gitlab.com/dogbull/pykawos',
     install_requires=[
-        'pandas',
+        'geopandas',
         'python-dateutil',
     ],
     packages=find_packages(exclude=['docs', 'tests*']),

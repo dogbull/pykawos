@@ -2,6 +2,7 @@ import datetime
 import os
 
 import pandas as pd
+import geopandas as gpd
 from dateutil.parser import parse as str2datm
 
 from .mapper import STATION_LIST_HEADER_MAPPER
@@ -23,6 +24,17 @@ def read(sub_url, cache_dir):
         if cache_path:
             os.makedirs(os.path.dirname(cache_path), exist_ok=True)
             df.to_csv(cache_path, index=False)
+    col_set = set(df.columns)
+    if len({'lon', 'lat'} - col_set) == 0:
+        geometry = gpd.points_from_xy(x=df.lon, y=df.lat)
+    elif len({'경도', '위도'} - col_set) == 0:
+        geometry = gpd.points_from_xy(x=df['경도'], y=df['위도'])
+    elif len({'x', 'y'} - col_set) == 0:
+        geometry = gpd.points_from_xy(x=df.x, y=df.y)
+    else:
+        geometry = None
+    if geometry:
+        df = gpd.GeoDataFrame(df, crs='epsg:4326', geometry=geometry)
     return df
 
 
