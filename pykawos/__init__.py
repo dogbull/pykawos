@@ -4,6 +4,8 @@ import os
 import pandas as pd
 from dateutil.parser import parse as str2datm
 
+from .mapper import STATION_LIST_HEADER_MAPPER
+
 BASE_URL = 'https://raw.githubusercontent.com/dogbull/kawos/master/'
 
 
@@ -24,12 +26,19 @@ def read(sub_url, cache_dir):
     return df
 
 
-def read_asos_stations(*, cache_dir='./.kawos'):
-    return read('/stations/asos.stations.csv', cache_dir)
+def read_stations(category, cache_dir='./.kawos', *, kor_header=False):
+    df = read(f'/stations/{category}.stations.csv', cache_dir)
+    if not kor_header:
+        df = df.rename(columns=STATION_LIST_HEADER_MAPPER)
+    return df
 
 
-def read_aws_stations(*, cache_dir='./.kawos'):
-    return read('/stations/aws.stations.csv', cache_dir)
+def read_asos_stations(*, cache_dir='./.kawos', kor_header=False):
+    return read_stations('asos', cache_dir, kor_header=kor_header)
+
+
+def read_aws_stations(*, cache_dir='./.kawos', kor_header=False):
+    return read_stations('aws', cache_dir, kor_header=kor_header)
 
 
 def read_single_point(category, code, begin, until, *, cache_dir='./.kawos'):

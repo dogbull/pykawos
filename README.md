@@ -24,10 +24,34 @@ import pykawos
 pykawos.read_asos_stations()
 ```
 
+또는
+
+```python
+pykawos.read_stations('asos')
+```
+
+[DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)의 헤더를 한글로 조회
+
+```python
+pykawos.read_asos_stations(kor_header=True)  # or pykawos.read_stations('asos', kor_header=True)
+```
+
 ### 방재기상관측(AWS)지점 목록
 
 ```python
 pykawos.read_aws_stations()
+```
+
+또는
+
+```python
+pykawos.read_stations('aws')
+```
+
+[DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)의 헤더를 한글로 조회
+
+```python
+pykawos.read_aws_stations(kor_header=True)  # or pykawos.read_stations('aws', kor_header=True)
 ```
 
 ### 단일 지점의 종관기상관측(ASOS) 자료 조회

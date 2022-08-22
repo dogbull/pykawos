@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pykawos',
-    version='0.0.1',
+    version='0.0.2',
     description='Python KMA AWS and ASOS',
     author='ParkJooHyeon',
     author_email='www.jrr.kr@gmail.com',
