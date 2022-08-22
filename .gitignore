@@ -1,0 +1,9 @@
+.idea
+venv
+build
+dist
+pykawos/tmp
+*.egg-info
+*.pyc
+.env
+*.csv
