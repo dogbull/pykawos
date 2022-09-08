@@ -102,4 +102,7 @@ pykawos.read_aws_multi_point('20210101')
 pykawos.read_multi_point('aws', '20210101')
 ```
 
+## 출처
 
+> 본 저작물은 [기상청](https://www.kma.go.kr)에서 작성하여 공공누리 제1유형으로 개방한 `종관기상관측`, `방재기상관측`을 이용하였으며,
+해당 저작물은 [기상자료개방포털](https://data.kma.go.kr/)에서 무료로 다운받으실 수 있습니다.
